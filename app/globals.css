@@ -1,26 +1,71 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg-lavender-mist: #f7f3fc;
+  --surface-white: #ffffff;
+  --plum-deep: #5b2e8a;
+  --plum-accent: #8a56ac;
+  --lilac-border: #e2d1f5;
+  --ink-plum: #241633;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-lavender-mist);
+  color: var(--ink-plum);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg-lavender-mist);
+  color: var(--ink-plum);
+  overflow-x: hidden;
+  background-image:
+    radial-gradient(circle at 12% 8%, rgba(196, 167, 231, 0.28), transparent 40%),
+    radial-gradient(circle at 88% 22%, rgba(216, 180, 254, 0.24), transparent 42%),
+    radial-gradient(circle at 50% 92%, rgba(138, 86, 172, 0.14), transparent 45%);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f3ecfb;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #8a56ac;
+  border-radius: 9999px;
+}
+
+.lilac-card {
+  background: #ffffff;
+  border: 1px solid #e2d1f5;
+  box-shadow: 0 12px 30px -18px rgba(91, 46, 138, 0.22);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.lilac-card:hover {
+  border-color: #b794e0;
+  box-shadow: 0 16px 36px -16px rgba(91, 46, 138, 0.3);
+}
+.reveal-section {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.75s ease-out, transform 0.75s ease-out;
+  will-change: opacity, transform;
+}
+
+.reveal-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-section {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
